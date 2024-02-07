@@ -1,11 +1,9 @@
-import Column from "./components/Column";
+import Kanban from "./components/Kanban";
 
 function App() {
   return (
     <div>
-      <Column title="To do" />
-      <Column title="Doing" />
-      <Column title="Ready" />
+      <Kanban />
     </div>
   );
 }
