@@ -1,32 +1,64 @@
-.column {
-    border: 1px solid #ccc;
-    color: #fff;
+.containerColumn {
+  color: #fff;
+  border-radius: 5px;
+  background-color: #131820;
+  width: 40rem;
+  height: 60rem;
+  max-height: 60rem;
+  display: flex;
+  flex-direction: column;
+
+  .column {
+    height: 60px;
     border-radius: 5px;
-    background-color: #000;
-    padding: 10px;
-    margin: 10px;
-    width: 400px;
-    height: 600px;
+    padding: 3px;
+    font: bold;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0c0f16;
+
+      h2 {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+      }
   }
-  
-  .column h2 {
-    margin-top: 0;
+
+  .cards {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
-  
-  .column button {
-    margin-bottom: 10px;
+
+  .adicionaTask{
+    height: 60px;
+    border-radius: 5px;
+    padding: 3px;
+    font: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0c0f16;
   }
-  
-  .column ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .column li {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    padding: 5px;
-    margin-bottom: 5px;
-  }
+}
+
+
+*::-webkit-scrollbar {
+  width: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #711633;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  display: none;
+}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Cards from '../Cards';
 import "./styles.scss";
 
 const Column = ({ title, tasks, onTaskAdd }) => {
@@ -16,22 +17,14 @@ const Column = ({ title, tasks, onTaskAdd }) => {
   };
 
   return (
-    <div className="column">
-      <div className="container">
-        <h2>{title}</h2>
-        {/* <input
-          type="text"
-          placeholder="Nova Tarefa"
-          value={newTask}
-          onChange={handleInputChange}
-        /> */}
-        <button onClick={handleTaskAdd}>Adicionar Tarefa</button>
-        <ul>
-          {tasks.map((task, index) => (
-            <li key={index}>{task}</li>
-          ))}
-        </ul>
+    <div className="containerColumn">
+      <div className="column">
+          <h2>{title}</h2>
       </div>
+      <div className="cards">
+        <Cards />
+      </div>
+      <div className="adicionaTask"></div>
     </div>
   );
 };
