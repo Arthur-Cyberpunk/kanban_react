@@ -1,13 +1,21 @@
 import React from "react";
 import "./styles.scss";
 
-const Cards = () => {
+const Cards = ({ arrayTask }) => {
+  console.log(arrayTask);
   return (
     <>
       <div className="card">
-        <p>aloiasndoiansodnaondoiasnmdoanmsdoiknmaosdnmaosndoasndoaksndo</p>
+        {/* <p>{arrayTask}</p> */}
+        <ul>
+          {arrayTask?.map((task, index) => (
+            <li key={index}>
+              <span>{task}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-      </>
+    </>
   );
 };
 

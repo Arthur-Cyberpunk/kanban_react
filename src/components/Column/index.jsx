@@ -4,6 +4,9 @@ import "./styles.scss";
 
 const Column = ({ title, tasks, onTaskAdd }) => {
   const [newTask, setNewTask] = useState("");
+  const [arrayTask, setArrayTask] = useState([]);
+
+  console.log(tasks)
 
   const handleInputChange = (e) => {
     setNewTask(e.target.value);
@@ -12,6 +15,7 @@ const Column = ({ title, tasks, onTaskAdd }) => {
   const handleTaskAdd = () => {
     if (newTask.trim() !== "") {
       onTaskAdd(newTask);
+      setArrayTask(prevValues => [...prevValues, newTask]);
       setNewTask("");
     }
   };
@@ -23,8 +27,8 @@ const Column = ({ title, tasks, onTaskAdd }) => {
       </div>
       <div className="cards">
       <ul>
-        {tasks.map((task, index) => (
-          <Cards key={index}>{task} </Cards >
+        {tasks?.map((task, index) => (
+          <Cards key={index} arrayTask={arrayTask}>{task} </Cards >
         ))}
       </ul>
         
