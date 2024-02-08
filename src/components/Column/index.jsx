@@ -22,9 +22,21 @@ const Column = ({ title, tasks, onTaskAdd }) => {
           <h2>{title}</h2>
       </div>
       <div className="cards">
-        <Cards />
+      <ul>
+        {tasks.map((task, index) => (
+          <Cards key={index}>{task} </Cards >
+        ))}
+      </ul>
+        
       </div>
-      <div className="adicionaTask"></div>
+      <div className="adicionaTask"> Add task</div>
+      <input
+        type="text"
+        placeholder="Nova Tarefa"
+        value={newTask}
+        onChange={handleInputChange}
+      />
+      <button onClick={handleTaskAdd}>Adicionar Tarefa</button>
     </div>
   );
 };

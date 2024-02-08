@@ -1,13 +1,7 @@
 .card {
     background-color: #0C0F16;
-    //border: 1px solid #ccc;
-    //border-radius: 5px;
     margin: 2rem 0;
-    //box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    //width: 30rem;
-    //height: 12rem;
     color: #fff;
-
     border-radius: 0.75rem;
     align-items: center;
     height: 100px;
@@ -16,13 +10,15 @@
     text-align: left;
 
     p {
-        white-space: pre-wrap;
+        white-space: wrap;
         overflow-x: hidden;
         overflow-y: auto;
         width: 100%;
         height: 90%;
-        margin-top: auto;
-        margin-bottom: auto;
+        //margin-top: auto;
+        //margin-bottom: auto;
+        font-size: 1.5rem;
+        word-wrap: break-word;
     }
 }
   

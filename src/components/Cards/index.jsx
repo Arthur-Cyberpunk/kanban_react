@@ -5,22 +5,7 @@ const Cards = () => {
   return (
     <>
       <div className="card">
-        <p>alo</p>
-      </div>
-      <div className="card">
-        <p>alo</p>
-      </div>
-      <div className="card">
-        <p>alo</p>
-      </div>
-      <div className="card">
-        <p>alo</p>
-      </div>
-      <div className="card">
-        <p>alo</p>
-      </div>
-      <div className="card">
-        <p>alo</p>
+        <p>aloiasndoiansodnaondoiasnmdoanmsdoiknmaosdnmaosndoasndoaksndo</p>
       </div>
       </>
   );
