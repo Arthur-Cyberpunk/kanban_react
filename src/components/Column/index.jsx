@@ -1,24 +1,29 @@
 import React, { useState } from "react";
 import Cards from '../Cards';
+import NewTaskModal from '../NewTaskModal';
 import "./styles.scss";
 
 const Column = ({ title, tasks, onTaskAdd }) => {
   const [newTask, setNewTask] = useState("");
   const [arrayTask, setArrayTask] = useState([]);
-
-  console.log(tasks)
+  const [showModal, setShowModal] = useState(false);
 
   const handleInputChange = (e) => {
     setNewTask(e.target.value);
   };
 
   const handleTaskAdd = () => {
+    setShowModal(!showModal);
     if (newTask.trim() !== "") {
       onTaskAdd(newTask);
       setArrayTask(prevValues => [...prevValues, newTask]);
       setNewTask("");
     }
   };
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  }
 
   return (
     <div className="containerColumn">
@@ -33,14 +38,8 @@ const Column = ({ title, tasks, onTaskAdd }) => {
       </ul>
         
       </div>
-      <div className="adicionaTask"> Add task</div>
-      <input
-        type="text"
-        placeholder="Nova Tarefa"
-        value={newTask}
-        onChange={handleInputChange}
-      />
-      <button onClick={handleTaskAdd}>Adicionar Tarefa</button>
+      <div onClick={handleTaskAdd} className="adicionaTask"> Add task</div>
+      {showModal && <NewTaskModal onClose={toggleModal} />}
     </div>
   );
 };
