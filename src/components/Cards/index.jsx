@@ -1,11 +1,14 @@
 import { format } from "date-fns";
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { deleteData, fetchData } from '../../redux/cards/actions';
 import ModalEditTask from "../ModalEditCard";
 import "./styles.scss";
 
 const Cards = ({ task }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
+  const dispatch = useDispatch();
 
   const createdAtDate = format(new Date(task.createdAt), "dd MMMM yyyy");
   const concludedAtDate = task.concludedAt
@@ -21,13 +24,19 @@ const Cards = ({ task }) => {
     setIsModalOpen(false);
   };
 
+  const handleDelete =  async  () => {
+    await dispatch(deleteData(task._id))
+    dispatch(fetchData());
+  };
+
   return (
     <>
       <div className="card">
-        <ul onClick={handleCardClick}>
-          <div className="boxDifficultAndDelete">
+        <ul >
+          <div className="boxEditAndDelete">
             <li className={`difficult ${task.difficult}`}>{task.difficult}</li>
-            <button className="deleteButton">Delete</button>
+            <button className="editButton" onClick={handleCardClick}>Edit</button>
+            <button className="deleteButton" onClick={handleDelete}>Delete</button>
           </div>
           <li className="description">{task.description}</li>
           <li className="createdAt">

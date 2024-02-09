@@ -35,7 +35,7 @@ const reducer = (state = initialState, action) => {
     case "DELETE_CARDS":
       return {
         ...state,
-        data: action.payload,
+        data: state.payload,
       };
 
     default:

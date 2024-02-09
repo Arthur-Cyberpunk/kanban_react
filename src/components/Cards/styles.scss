@@ -8,9 +8,30 @@
   text-align: left;
   width: 100%;
 
-  .boxDifficultAndDelete {
+  .boxEditAndDelete {
     display: flex;
     justify-content: space-between;
+    gap: 2rem;
+
+    .editButton {
+      margin-left: auto;
+      background-color: #ffc107;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 1rem 2rem;
+      font-size: 1.4rem;
+      cursor: pointer; 
+      transition: background-color 0.3s ease; 
+    }
+    
+    .editButton:hover {
+      background-color: #ffca28;
+    }
+    
+    .editButton:active {
+      background-color: #ffb300;
+    }
 
     .deleteButton {
       background-color: #ff5555;
