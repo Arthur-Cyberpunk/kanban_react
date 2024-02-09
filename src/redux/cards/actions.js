@@ -12,7 +12,7 @@ export const fetchData = () => async (dispatch) => {
 
 export const postData = (data) => async (dispatch) => {
   try {
-    await axios.post("sua_url_para_o_endpoint", data);
+    await axios.post("http://localhost:3001/cardKanban/card", data);
     dispatch({ type: "POST_CARDS" });
   } catch (error) {
     dispatch({ type: "ERROR", payload: error });

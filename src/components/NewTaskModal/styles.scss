@@ -23,7 +23,7 @@
     .createNewCard {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 1rem;
 
       .titleNewCard {
         height: 4rem;
@@ -44,7 +44,7 @@
         border-radius: 4px;
         background-color: #fff;
         cursor: pointer;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
 
         option {
           padding: 10px;
