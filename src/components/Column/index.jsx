@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDrag } from 'react-dnd';
 import { useSelector } from "react-redux";
 import useTasksByStatus from '../../utils/useCreateColumns';
 import Cards from "../Cards";
@@ -18,12 +19,19 @@ const Column = ({ title }) => {
     setShowModal(!showModal);
   };
 
+  const [{ isDragging }, dragRef] = useDrag({
+    type: 'CARD',
+    collect: monitor => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
   return (
     <div className="containerColumn">
       <div className="column">
         <h2>{title}</h2>
       </div>
-      <div className="cards">
+      <div className="cards" ref={dragRef}>
         {tasksByStatus[title]?.map((task, index) => (
           <Cards key={index} className="task" task={task}></Cards>
         ))}

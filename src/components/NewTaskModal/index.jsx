@@ -6,7 +6,7 @@ import "./styles.scss";
 
 const NewTaskModal = (props) => {
   const dispatch = useDispatch();
-  const descriptionRef = useRef(null);
+  const titleRef = useRef(null);
   const difficultRef = useRef(null);
   const statusRef = useRef(null);
   const currentDate = new Date();
@@ -19,7 +19,7 @@ const NewTaskModal = (props) => {
   const handleSubmit = async () => {
     if (statusRef.current.value === "Ready") {
       const taskData = {
-        description: descriptionRef.current.value,
+        title: titleRef.current.value,
         difficult: difficultRef.current.value,
         status: statusRef.current.value,
         concludedAt: formattedDate
@@ -27,7 +27,7 @@ const NewTaskModal = (props) => {
       await dispatch(postData(taskData));
     } else {
       const taskData = {
-        description: descriptionRef.current.value,
+        title: titleRef.current.value,
         difficult: difficultRef.current.value,
         status: statusRef.current.value,
       };
@@ -38,38 +38,37 @@ const NewTaskModal = (props) => {
   };
 
   return (
-    <section className="containerModal">
-      <div className="modal-content">
-        <span>Criar Nova Tarefa</span>
-        <form className="createNewCard" onSubmit={handleSubmit}>
-          <textarea
-            className="descriptionNewCard"
-            rows="4"
-            cols="50"
-            placeholder="Descricao da Tarefa"
-            ref={descriptionRef}
-          ></textarea>
-          <select className="difficult" ref={difficultRef}>
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-          </select>
-          <select className="difficult" ref={statusRef}>
-            <option value="Todo">To do</option>
-            <option value="Doing">Doing</option>
-            <option value="Ready">Ready</option>
-          </select>
-          <div className="decision">
-            <button className="create" type="submit">
-              Criar
-            </button>
-            <button className="cancel" onClick={closeModal}>
-              Cancelar
-            </button>
-          </div>
-        </form>
+<section className="containerModal">
+  <div className="modal-content">
+    <span>Criar Nova Tarefa</span>
+    <form className="createNewCard" onSubmit={handleSubmit}>
+      <input
+        className="descriptionNewCard"
+        type="text"
+        placeholder="Titutlo da Tarefa"
+        ref={titleRef}
+      />
+      <select className="difficult" ref={difficultRef}>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <select className="difficult" ref={statusRef}>
+        <option value="Todo">To do</option>
+        <option value="Doing">Doing</option>
+        <option value="Ready">Ready</option>
+      </select>
+      <div className="decision">
+        <button className="create" type="submit">
+          Criar
+        </button>
+        <button className="cancel" onClick={closeModal}>
+          Cancelar
+        </button>
       </div>
-    </section>
+    </form>
+  </div>
+</section>
   );
 };
 

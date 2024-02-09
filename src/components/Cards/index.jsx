@@ -38,7 +38,7 @@ const Cards = ({ task }) => {
             <button className="editButton" onClick={handleCardClick}>Edit</button>
             <button className="deleteButton" onClick={handleDelete}>Delete</button>
           </div>
-          <li className="description">{task.description}</li>
+          <li className="description">{task.title}</li>
           <li className="createdAt">
             {createdAtDate} {concludedAtDate}
           </li>
