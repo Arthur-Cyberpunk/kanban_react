@@ -1,24 +1,49 @@
 .card {
-    background-color: #0C0F16;
-    margin: 2rem 0;
-    color: #fff;
-    border-radius: 0.75rem;
-    align-items: center;
-    height: 100px;
-    min-height: 100px;
-    display: flex;
-    text-align: left;
+  background-color: #0c0f16;
+  //margin: 2rem 0;
+  color: #fff;
+  border-radius: 0.75rem;
+  height: 12rem;
+  //min-height: 12rem;
+  text-align: left;
+  width: 100%;
 
-    p {
-        white-space: wrap;
-        overflow-x: hidden;
-        overflow-y: auto;
-        width: 100%;
-        height: 90%;
-        //margin-top: auto;
-        //margin-bottom: auto;
-        font-size: 1.5rem;
-        word-wrap: break-word;
+  ul {
+    font-size: 1.8rem;
+    padding: 0.5rem;
+    white-space: wrap;
+    overflow-x: hidden;
+    overflow-y: auto;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .difficult {
+      width: 20%;
     }
+
+    .easy {
+      background-color: green;
+    }
+
+    .medium {
+      background-color: blue;
+    }
+
+    .hard {
+      background-color: red;
+    }
+
+    .description {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 300px;
+    }
+
+    .createdAt {
+      display: flex;
+    }
+  }
 }
-  

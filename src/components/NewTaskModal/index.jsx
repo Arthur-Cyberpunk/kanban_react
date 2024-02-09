@@ -1,9 +1,11 @@
 import "./styles.scss";
 
 const ModalBookGame = (props) => {
+
+  console.log(props)
     
   const closeModal = () => {
-    props.setModalOpen(false);
+    props.onClose();
   };
 
   return (
@@ -32,7 +34,7 @@ const ModalBookGame = (props) => {
           <button className="create" type="submit">
             Criar
           </button>
-          <button className="cancel">Cancelar</button>
+          <button className="cancel" onClick={closeModal}>Cancelar</button>
         </div>
       </div>
     </section>

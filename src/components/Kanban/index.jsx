@@ -19,12 +19,17 @@ const Kanban = () => {
 
   useFetchData()
 
+  const columnsOrder = ['Todo', 'Doing', 'Ready'];
+
+
   return (
     <div className="container">
       <div className="kanbanColumns">
-        <Column title="To Do" tasks={todoTasks} onTaskAdd={addTaskToTodo} />
-        <Column title="Doing" tasks={doingTasks} onTaskAdd={addTaskToDoing} />
-        <Column title="Ready" tasks={readyTasks} onTaskAdd={addTaskToReady} />
+      {columnsOrder.map(title => (
+        <div className="column" key={title}>
+          <Column  title={title} />
+        </div>
+      ))}
       </div>
       <button onClick={toggleModal}>Criar Nova Tarefa</button>
       
