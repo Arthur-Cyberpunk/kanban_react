@@ -5,14 +5,7 @@ import "./styles.scss";
 
 const Kanban = () => {
   const [showModal, setShowModal] = useState(false);
-  const [todoTasks, setTodoTasks] = useState([]);
-  const [doingTasks, setDoingTasks] = useState([]);
-  const [readyTasks, setReadyTasks] = useState([]);
 
-  const addTaskToTodo = (task) => setTodoTasks([...todoTasks, task]);
-  const addTaskToDoing = (task) => setDoingTasks([...doingTasks, task]);
-  const addTaskToReady = (task) => setReadyTasks([...readyTasks, task]);
-  
   const toggleModal = () => {
     setShowModal(!showModal);
   }

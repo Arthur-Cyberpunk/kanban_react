@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { postData } from '../../redux/cards/actions';
+import { patchData } from '../../redux/cards/actions';
 import "./styles.scss";
 
-const NewTaskModal = (props) => {
+const ModalEditCard = (props) => {
   const dispatch = useDispatch();
   const descriptionRef = useRef(null);
   const difficultRef = useRef(null);
@@ -14,12 +14,13 @@ const NewTaskModal = (props) => {
   };
 
   const handleSubmit = () => {
+    const id = props.task._id
     const taskData = {
       description: descriptionRef.current.value,
       difficult: difficultRef.current.value,
       status: statusRef.current.value,
     };
-    dispatch(postData(taskData));
+    dispatch(patchData(id, taskData));
     closeModal();
   };
 
@@ -33,14 +34,15 @@ const NewTaskModal = (props) => {
             rows="4"
             cols="50"
             placeholder="Descricao da Tarefa"
+            defaultValue={props.task.description}
             ref={descriptionRef}
           ></textarea>
-          <select className="difficult" ref={difficultRef}>
+          <select className="difficult" ref={difficultRef} defaultValue={props.task.difficult}>
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </select>
-          <select className="difficult" ref={statusRef}>
+          <select className="difficult" ref={statusRef} defaultValue={props.task.status}>
             <option value="Todo">To do</option>
             <option value="Doing">Doing</option>
             <option value="Ready">Ready</option>
@@ -57,4 +59,4 @@ const NewTaskModal = (props) => {
   );
 };
 
-export default NewTaskModal;
+export default ModalEditCard;
