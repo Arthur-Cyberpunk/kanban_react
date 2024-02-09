@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useFetchData from "../../utils/useFetchData";
 import Column from "../Column";
 import "./styles.scss";
 
@@ -15,6 +16,8 @@ const Kanban = () => {
   const toggleModal = () => {
     setShowModal(!showModal);
   }
+
+  useFetchData()
 
   return (
     <div className="container">
