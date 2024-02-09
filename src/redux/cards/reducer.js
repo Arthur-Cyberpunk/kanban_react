@@ -5,7 +5,6 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_CARDS":
-      console.log("cheguei");
       return {
         ...state,
         data: action.payload,
@@ -31,6 +30,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         data: updatedData,
+      };
+
+    case "DELETE_CARDS":
+      return {
+        ...state,
+        data: action.payload,
       };
 
     default:

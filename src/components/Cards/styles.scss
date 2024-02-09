@@ -3,10 +3,34 @@
   //margin: 2rem 0;
   color: #fff;
   border-radius: 0.75rem;
-  height: 12rem;
+  height: 14rem;
   //min-height: 12rem;
   text-align: left;
   width: 100%;
+
+  .boxDifficultAndDelete {
+    display: flex;
+    justify-content: space-between;
+
+    .deleteButton {
+      background-color: #ff5555;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 1rem 1rem;
+      font-size: 1.4rem;
+      cursor: pointer; 
+      transition: background-color 0.3s ease; 
+    }
+    
+    .deleteButton:hover {
+      background-color: #ff3333;
+    }
+    
+    .deleteButton:active {
+      background-color: #cc0000;
+    }
+  }
 
   ul {
     font-size: 1.8rem;
@@ -21,6 +45,7 @@
 
     .difficult {
       width: 20%;
+      border-radius: 4px;
     }
 
     .easy {

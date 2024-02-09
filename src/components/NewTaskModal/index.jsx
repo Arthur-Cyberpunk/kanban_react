@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchData, postData } from '../../redux/cards/actions';
+import { format } from "date-fns";
+import React, { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { fetchData, postData } from "../../redux/cards/actions";
 import "./styles.scss";
 
 const NewTaskModal = (props) => {
@@ -8,18 +9,30 @@ const NewTaskModal = (props) => {
   const descriptionRef = useRef(null);
   const difficultRef = useRef(null);
   const statusRef = useRef(null);
+  const currentDate = new Date();
+  const formattedDate = format(currentDate, "dd MMMM yyyy");
 
   const closeModal = () => {
     props.onClose();
   };
 
   const handleSubmit = async () => {
-    const taskData = {
-      description: descriptionRef.current.value,
-      difficult: difficultRef.current.value,
-      status: statusRef.current.value,
-    };
-    await dispatch(postData(taskData));
+    if (statusRef.current.value === "Ready") {
+      const taskData = {
+        description: descriptionRef.current.value,
+        difficult: difficultRef.current.value,
+        status: statusRef.current.value,
+        concludedAt: formattedDate
+      };
+      await dispatch(postData(taskData));
+    } else {
+      const taskData = {
+        description: descriptionRef.current.value,
+        difficult: difficultRef.current.value,
+        status: statusRef.current.value,
+      };
+      await dispatch(postData(taskData));
+    }
     dispatch(fetchData());
     closeModal();
   };
@@ -47,11 +60,13 @@ const NewTaskModal = (props) => {
             <option value="Ready">Ready</option>
           </select>
           <div className="decision">
-          <button className="create" type="submit">
-            Criar
-          </button>
-          <button className="cancel" onClick={closeModal}>Cancelar</button>
-        </div>
+            <button className="create" type="submit">
+              Criar
+            </button>
+            <button className="cancel" onClick={closeModal}>
+              Cancelar
+            </button>
+          </div>
         </form>
       </div>
     </section>

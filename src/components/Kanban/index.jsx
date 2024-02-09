@@ -1,15 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import useFetchData from "../../utils/useFetchData";
 import Column from "../Column";
 import "./styles.scss";
 
 const Kanban = () => {
   const columnsOrder = ["Todo", "Doing", "Ready"];
-  const [showModal, setShowModal] = useState(false);
-
-  const toggleModal = () => {
-    setShowModal(!showModal);
-  };
 
   useFetchData();
 
@@ -22,7 +17,6 @@ const Kanban = () => {
           </div>
         ))}
       </div>
-      <button onClick={toggleModal}>Criar Nova Tarefa</button>
     </div>
   );
 };
