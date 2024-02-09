@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { patchData } from '../../redux/cards/actions';
+import { fetchData, patchData } from '../../redux/cards/actions';
 import "./styles.scss";
 
 const ModalEditCard = (props) => {
@@ -13,14 +13,15 @@ const ModalEditCard = (props) => {
     props.onClose();
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const id = props.task._id
     const taskData = {
       description: descriptionRef.current.value,
       difficult: difficultRef.current.value,
       status: statusRef.current.value,
     };
-    dispatch(patchData(id, taskData));
+    await dispatch(patchData(id, taskData));
+    dispatch(fetchData());
     closeModal();
   };
 

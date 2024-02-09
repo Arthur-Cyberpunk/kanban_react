@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { postData } from '../../redux/cards/actions';
+import { fetchData, postData } from '../../redux/cards/actions';
 import "./styles.scss";
 
 const NewTaskModal = (props) => {
@@ -13,13 +13,14 @@ const NewTaskModal = (props) => {
     props.onClose();
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const taskData = {
       description: descriptionRef.current.value,
       difficult: difficultRef.current.value,
       status: statusRef.current.value,
     };
-    dispatch(postData(taskData));
+    await dispatch(postData(taskData));
+    dispatch(fetchData());
     closeModal();
   };
 
