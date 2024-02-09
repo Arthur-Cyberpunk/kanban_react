@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import React, { useState } from "react";
+import { useDrag } from 'react-dnd';
 import { useDispatch } from 'react-redux';
 import { deleteData, fetchData } from '../../redux/cards/actions';
 import ModalEditTask from "../ModalEditCard";
@@ -29,9 +30,16 @@ const Cards = ({ task }) => {
     dispatch(fetchData());
   };
 
+  const [{ isDragging }, dragRef] = useDrag({
+    type: 'CARD',
+    collect: monitor => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
   return (
     <>
-      <div className="card">
+      <div className="card" ref={dragRef}>
         <ul >
           <div className="boxEditAndDelete">
             <li className={`difficult ${task.difficult}`}>{task.difficult}</li>
