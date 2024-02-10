@@ -1,7 +1,7 @@
 .card {
   width: 30rem;
   position: relative;
-  background: #FFF;
+  background: #fff;
   border-radius: 5px;
   margin-bottom: 10px;
   padding: 15px;
@@ -22,14 +22,14 @@
       border-radius: 4px;
       padding: 1rem 2rem;
       font-size: 1.4rem;
-      cursor: pointer; 
-      transition: background-color 0.3s ease; 
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    
+
     .editButton:hover {
       background-color: #ffca28;
     }
-    
+
     .editButton:active {
       background-color: #ffb300;
     }
@@ -41,14 +41,14 @@
       border-radius: 4px;
       padding: 1rem 1rem;
       font-size: 1.4rem;
-      cursor: pointer; 
-      transition: background-color 0.3s ease; 
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    
+
     .deleteButton:hover {
       background-color: #ff3333;
     }
-    
+
     .deleteButton:active {
       background-color: #cc0000;
     }
@@ -77,11 +77,11 @@
     }
 
     .medium {
-      background-color: #0000CD;
+      background-color: #0000cd;
     }
 
     .hard {
-      background-color: #FF0000;
+      background-color: #ff0000;
     }
   }
 }

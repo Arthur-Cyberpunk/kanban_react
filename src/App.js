@@ -1,11 +1,7 @@
 import Kanban from "./components/Kanban";
 
 function App() {
-  return (
-    <div>
-      <Kanban />
-    </div>
-  );
+  return <Kanban />;
 }
 
 export default App;

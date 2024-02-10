@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const useFilteredTasksByStatus = (response) => {
   const [filteredTasksByStatus, setFilteredTasksByStatus] = useState({});
   const [filter, setFilter] = useState('');
-  const [sortOrder, setSortOrder] = useState('asc'); // 'asc' ou 'desc'
+  const [sortOrder, setSortOrder] = useState('asc');
 
   const filterTasksByStatus = (response, filter) => {
     const filteredTasks = response?.data?.reduce((acc, task) => {
@@ -30,7 +30,7 @@ const useFilteredTasksByStatus = (response) => {
     const sortedTasks = [...filteredTasksByStatus[title]].sort((a, b) => {
       const dateA = new Date(a.createdAt);
       const dateB = new Date(b.createdAt);
-      if (sortOrder === 'asc') {
+      if (sortOrder === 'desc') {
         return dateA - dateB;
       } else {
         return dateB - dateA;
@@ -43,7 +43,7 @@ const useFilteredTasksByStatus = (response) => {
   };
 
   const toggleSortOrder = () => {
-    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc');
   };
 
   return { filteredTasksByStatus, handleFilterChange, sortByDate, toggleSortOrder };
