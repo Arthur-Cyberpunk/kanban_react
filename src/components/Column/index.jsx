@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import { BiAddToQueue } from "react-icons/bi";
+import { CiFilter } from "react-icons/ci";
 import { useSelector } from "react-redux";
-import useTasksByStatus from '../../utils/useCreateColumns';
+import useFilteredTasksByStatus from "../../utils/useFilteredTasksByStatus";
 import Cards from "../Cards";
 import NewTaskModal from "../NewTaskModal";
 import "./styles.scss";
 
 const Column = ({ title, index: listIndex }) => {
-  const [showModal, setShowModal] = useState(false);
   const response = useSelector((rootReducer) => rootReducer.cardsReducer);
-  const tasksByStatus = useTasksByStatus(response);
+  const [showModal, setShowModal] = useState(false);
+  const {
+    filteredTasksByStatus,
+    handleFilterChange,
+    sortByDate,
+    toggleSortOrder,
+  } = useFilteredTasksByStatus(response);
 
   const handleTaskAdd = () => {
     setShowModal(!showModal);
@@ -19,17 +25,44 @@ const Column = ({ title, index: listIndex }) => {
     setShowModal(!showModal);
   };
 
+  const handleSortByDate = () => {
+    sortByDate(title);
+    toggleSortOrder();
+  };
+
   return (
     <div className="containerColumn">
       <div className="column">
         <h2>{title}</h2>
-        <button type="button" onClick={handleTaskAdd}>
-            <BiAddToQueue size={24} color="#FFF" />
-          </button>
+
+        <button className="newTask" type="button" onClick={handleTaskAdd}>
+          <BiAddToQueue size={24} color="#FFF" />
+        </button>
       </div>
-      <ul className="cards" >
-        {tasksByStatus[title]?.map((task, index, ) => (
-          <Cards key={index} className="task" task={task} index={index} listIndex={listIndex}></Cards>
+      <div className="columnFilters">
+        <input
+          type="text"
+          onChange={(e) => handleFilterChange(e.target.value)}
+          placeholder="Filtrar por título..."
+          className="filterTitle"
+        />
+
+        <div className="boxOrdering">
+          <p>Order by date</p>
+          <button className="ordering" type="button" onClick={handleSortByDate}>
+            <CiFilter size={36} color="#000" />
+          </button>
+        </div>
+      </div>
+      <ul className="cards">
+        {filteredTasksByStatus[title]?.map((task, index) => (
+          <Cards
+            key={index}
+            className="task"
+            task={task}
+            index={index}
+            listIndex={listIndex}
+          />
         ))}
       </ul>
       {showModal && <NewTaskModal onClose={toggleModal} />}

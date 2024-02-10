@@ -30,7 +30,6 @@ export const patchData = (id, data) => async (dispatch) => {
 export const deleteData = (id) => async (dispatch) => {
   try {
     await axios.delete(`http://localhost:3001/cardKanban/card/${id}`);
-    console.log(id);
     dispatch({ type: "DELETE_CARDS" });
   } catch (error) {
     dispatch({ type: "ERROR", payload: error });

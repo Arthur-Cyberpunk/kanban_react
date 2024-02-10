@@ -1,6 +1,7 @@
 .containerColumn {
   padding: 0 15px;
   height: 100%;
+  width: 100%;
   flex: 0 0 320px;
 
   & + div {
@@ -11,50 +12,57 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 42px;
+    height: 60px;
+    width: 30rem;
 
-      h2 {
-        font-weight: 500;
-        font-size: 2.4rem;
-        padding: 0 10px;
+    h2 {
+      font-weight: 500;
+      font-size: 2.4rem;
+      padding: 0 10px;
+    }
+
+    .newTask {
+      width: 42px;
+      height: 42px;
+      border-radius: 18px;
+      background: #3b5bfd;
+      border: 0;
+      cursor: pointer;
+    }
+
+  }
+
+  .columnFilters {
+    display: flex;
+    flex-direction: column;
+
+    .filterTitle {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .boxOrdering {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      p {
+        font-size: 2rem;
       }
 
-      button {
-        width: 42px;
-        height: 42px;
-        border-radius: 18px;
-        background: #3b5bfd;
+      .ordering {
+        color: #000;
         border: 0;
         cursor: pointer;
       }
+    }
   }
 
   .cards {
     margin-top: 30px;
   }
-
-  .adicionaTask{
-    width: 100%;
-    height: 6rem;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    cursor: pointer;
-  }
-}
-
-
-*::-webkit-scrollbar {
-  width: 4px;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: #711633;
-  border-radius: 10px;
-}
-
-*::-webkit-scrollbar-track {
-  display: none;
 }
