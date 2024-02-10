@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
-import { fetchData, postData } from "../../redux/cards/actions";
+import { postData } from "../../redux/cards/actions";
 import "./styles.scss";
 
 const NewTaskModal = (props) => {
@@ -16,7 +16,7 @@ const NewTaskModal = (props) => {
     props.onClose();
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
     if (statusRef.current.value === "Ready") {
       const taskData = {
         title: titleRef.current.value,
@@ -33,7 +33,6 @@ const NewTaskModal = (props) => {
       };
       await dispatch(postData(taskData));
     }
-    dispatch(fetchData());
     closeModal();
   };
 

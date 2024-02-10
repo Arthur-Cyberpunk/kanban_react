@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
-import { fetchData, patchData } from "../../redux/cards/actions";
+import { patchData } from "../../redux/cards/actions";
 import "./styles.scss";
 
 const ModalEditCard = (props) => {
@@ -16,7 +16,7 @@ const ModalEditCard = (props) => {
     props.onClose();
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
     const id = props.task._id;
     if (statusRef.current.value === "Ready") {
       const taskData = {
@@ -34,7 +34,7 @@ const ModalEditCard = (props) => {
       };
       await dispatch(patchData(id, taskData));
     }
-    dispatch(fetchData());
+    event.preventDefault()
     closeModal();
   };
 
