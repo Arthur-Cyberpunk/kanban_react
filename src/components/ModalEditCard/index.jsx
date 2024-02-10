@@ -41,13 +41,14 @@ const ModalEditCard = (props) => {
   return (
     <section className="containerModal">
       <div className="modal-content">
-        <span>Criar Nova Tarefa</span>
+        <span>Editar Tarefa</span>
         <form className="createNewCard" onSubmit={handleSubmit}>
           <input
             className="descriptionNewCard"
             type="text"
             placeholder="Titutlo da Tarefa"
             ref={titleRef}
+            defaultValue={props.task.title}
           />
           <select
             className="difficult"
@@ -69,7 +70,7 @@ const ModalEditCard = (props) => {
           </select>
           <div className="decision">
             <button className="create" type="submit">
-              Criar
+             Editar
             </button>
             <button className="cancel" onClick={closeModal}>
               Cancelar

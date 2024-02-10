@@ -11,9 +11,9 @@ const Kanban = () => {
   return (
     <div className="container">
       <div className="kanbanColumns">
-        {columnsOrder.map((title) => (
+        {columnsOrder.map((title, index) => (
           <div className="column" key={title}>
-            <Column title={title} />
+            <Column title={title} index={index}/>
           </div>
         ))}
       </div>
