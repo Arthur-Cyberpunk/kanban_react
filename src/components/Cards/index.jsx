@@ -24,8 +24,8 @@ const Cards = ({ task }) => {
     setIsModalOpen(false);
   };
 
-  const handleDelete = async () => {
-    await dispatch(deleteData(task._id));
+  const handleDelete = () => {
+    dispatch(deleteData(task._id));
     dispatch(fetchData());
   };
 

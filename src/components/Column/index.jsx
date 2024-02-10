@@ -7,7 +7,7 @@ import Cards from "../Cards";
 import NewTaskModal from "../NewTaskModal";
 import "./styles.scss";
 
-const Column = ({ title, index: listIndex }) => {
+const Column = ({ title }) => {
   const response = useSelector((rootReducer) => rootReducer.cardsReducer);
   const [showModal, setShowModal] = useState(false);
   const {
@@ -61,7 +61,6 @@ const Column = ({ title, index: listIndex }) => {
             className="task"
             task={task}
             index={index}
-            listIndex={listIndex}
           />
         ))}
       </ul>
