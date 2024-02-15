@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { postData } from "../../redux/cards/actions";
 import "./styles.scss";
@@ -11,12 +11,22 @@ const NewTaskModal = (props) => {
   const statusRef = useRef(null);
   const currentDate = new Date();
   const formattedDate = format(currentDate, "dd MMMM yyyy");
+  const [errorTitle, setErrorTitle] = useState(false);
 
   const closeModal = () => {
     props.onClose();
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
+  
+    setErrorTitle(false);
+  
+    if (!titleRef.current.value) {
+      event.preventDefault();
+      setErrorTitle(true);
+      return;
+    }
+  
     if (statusRef.current.value === "Ready") {
       const taskData = {
         title: titleRef.current.value,
@@ -33,8 +43,11 @@ const NewTaskModal = (props) => {
       };
       await dispatch(postData(taskData));
     }
+    
     closeModal();
   };
+  
+  
 
   return (
 <section className="containerModal">
@@ -66,6 +79,7 @@ const NewTaskModal = (props) => {
         </button>
       </div>
     </form>
+    {!errorTitle ? <></> : <span className="error">*Insira um titulo para poder continuar*</span>}
   </div>
 </section>
   );
