@@ -5,7 +5,6 @@ import { deleteData, fetchData } from "../../redux/cards/actions";
 import ModalEditTask from "../ModalEditCard";
 import "./styles.scss";
 
-
 const Cards = ({ task }) => {
   const ref = useRef();
   const dispatch = useDispatch();
