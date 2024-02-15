@@ -1,22 +1,28 @@
 import { useEffect, useState } from "react";
 
 const useFilteredTasksByStatus = (response) => {
-  const [filteredTasksByStatus, setFilteredTasksByStatus] = useState({});
+  const [filteredTasksByStatus, setFilteredTasksByStatus] = useState([]);
   const [filter, setFilter] = useState('');
   const [sortOrder, setSortOrder] = useState('asc');
 
-  const filterTasksByStatus = (response, filter) => {
-    const filteredTasks = response?.data?.reduce((acc, task) => {
-      if (!filter || task.title.toLowerCase().includes(filter.toLowerCase())) {
-        if (!acc[task.status]) {
-          acc[task.status] = [];
-        }
-        acc[task.status].push(task);
-      }
-      return acc;
-    }, {});
-    setFilteredTasksByStatus(filteredTasks);
-  };
+const filterTasksByStatus = (response, filter) => {
+  const filteredTasks = response?.data?.reduce((acc, task) => {
+    const { status, title } = task;
+    const normalizedFilter = filter ? filter.toLowerCase() : '';
+    const normalizedTitle = title ? title.toLowerCase() : '';
+
+    const shouldIncludeTask = !normalizedFilter || normalizedTitle.includes(normalizedFilter);
+
+    if (shouldIncludeTask) {
+      acc[status] = acc[status] || [];
+      acc[status].push(task);
+    }
+
+    return acc;
+  }, {});
+
+  setFilteredTasksByStatus(filteredTasks);
+};
 
   useEffect(() => {
     filterTasksByStatus(response, filter);

@@ -16,7 +16,7 @@ const NewTaskModal = (props) => {
     props.onClose();
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async () => {
     if (statusRef.current.value === "Ready") {
       const taskData = {
         title: titleRef.current.value,
