@@ -20,6 +20,8 @@
 
 <p>Criada as funcionalidades conforme previstas no desafio tecnico, sendo elas, Get, Post, Patch, Delete, Filtro e Ordenação</p>
 
+<p>Usando as tecnologias propostas</p>
+
 <h2>Estruturas de pastas</h2>
 
 <p>- public/</p>
