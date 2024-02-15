@@ -27,7 +27,6 @@ const Cards = ({ task }) => {
   const handleDelete = () => {
     dispatch(deleteData(task._id));
     dispatch(fetchData());
-    window.location.reload();
   };
 
   return (

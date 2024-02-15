@@ -5,6 +5,7 @@ export const fetchData = () => async (dispatch) => {
     const response = await axios.get(
       "https://kanbannodejs-production.up.railway.app/cardKanban/card",
     );
+    console.log(response);
     dispatch({ type: "GET_CARDS", payload: response.data });
   } catch (error) {
     dispatch({ type: "ERROR", payload: error });
@@ -41,6 +42,7 @@ export const deleteData = (id) => async (dispatch) => {
       `https://kanbannodejs-production.up.railway.app/cardKanban/card/${id}`,
     );
     dispatch({ type: "DELETE_CARDS" });
+    window.location.reload();
   } catch (error) {
     dispatch({ type: "ERROR", payload: error });
   }

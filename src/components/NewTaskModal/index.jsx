@@ -18,7 +18,7 @@ const NewTaskModal = (props) => {
   };
 
   const handleSubmit = async (event) => {
-  
+
     setErrorTitle(false);
   
     if (!titleRef.current.value) {
