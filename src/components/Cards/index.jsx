@@ -1,9 +1,10 @@
-import { format } from "date-fns";
+import { addDays, format } from "date-fns";
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteData, fetchData } from "../../redux/cards/actions";
 import ModalEditTask from "../ModalEditCard";
 import "./styles.scss";
+
 
 const Cards = ({ task }) => {
   const ref = useRef();
@@ -12,8 +13,8 @@ const Cards = ({ task }) => {
   const [selectedTask, setSelectedTask] = useState(null);
   const createdAtDate = format(new Date(task.createdAt), "dd MMMM yyyy");
   const concludedAtDate = task.concludedAt
-    ? format(new Date(task.concludedAt), "- dd MMMM yyyy")
-    : "";
+  ? format(addDays(new Date(task.concludedAt), 1), "- dd MMMM yyyy")
+  : "";
 
   const handleCardClick = () => {
     setSelectedTask(task);
